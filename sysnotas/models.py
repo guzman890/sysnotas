@@ -23,18 +23,20 @@ class curso(models.Model):
     _name = 'sysnotas.curso'
     _rec_name = "curso_name"
 
-    curso_codigo = fields.Integer(string = "Codigo", 
+    curs_cod = fields.Integer(string = "Codigo", 
         required = True,
         index = True
         )
-    curso_name = fields.Char( string = "Nombre", 
+    curs_nomb = fields.Char( string = "Nombre", 
         size = 30,
         required = True
         )
-    curso_creditos = fields.Integer(string = "creditos",
+    curs_cred = fields.Integer(string = "creditos",
         help = "cantidad de creditos "
         )
-    curso_matricula_codigo = fields.Many2many(
+
+    """ relaciones """
+    curs_matr_cod = fields.Many2many(
         'sysnotas.matricula',
         string = 'matr_cod' 
         )
@@ -44,22 +46,24 @@ class matricula(models.Model):
     _name = 'sysnotas.matricula'
     _rec_name = "matricula_codigo"
 
-    matricula_codigo = fields.Integer(string = "Codigo",
+    matr_cod = fields.Integer(string = "Codigo",
         help = "codigo de matricula",
         index = True
         )
-    matricula_name = fields.Char(string = "Codigo",
+    matr_nomb = fields.Char(string = "Codigo",
         help = "nombre de matricula",
         size = 30
         )
-    matricula_alumno_obs = fields.Text(string = "Observacion", 
-        store =False,
+    matr_alum_obs = fields.Text(string = "Observacion", 
+        store = False,
         compute = 'ObtObs'
         )
-    matricula_alumno_cui = fields.Many2one(
+
+    """" relaciones """
+    matr_alum_cui = fields.Many2one(
         'sysnotas.alumno')
 
-    matricula_curso_codigo = fields.Many2many(
+    matr_curs_cod = fields.Many2many(
         'sysnotas.curso',
         string = 'curs_cod'
         )
