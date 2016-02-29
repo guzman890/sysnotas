@@ -71,4 +71,4 @@ class matricula(models.Model):
     @api.multi
     @api.depends('matr_alum_cui')
     def ObtObs(self):
-        self.matr_alum_obs = self.matr_alum_cui.alumno_obs
+        self.matr_alum_obs = self.matr_alum_cui.alum_obs
