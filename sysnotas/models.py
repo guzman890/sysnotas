@@ -4,13 +4,13 @@ from openerp import models, fields, api
 
 class alumno(models.Model):
     _name = 'sysnotas.alumno'
-    _rec_name = "alumno_name"
+    _rec_name = "alum_nomb"
     
     alum_cui = fields.Integer(string = "CUI", 
         required = True,
         index = True
         )
-    alum_name = fields.Char( string = "Nombre", 
+    alum_nomb = fields.Char( string = "Nombre", 
         size = 30,
         required = True
         )
@@ -21,7 +21,7 @@ class alumno(models.Model):
 
 class curso(models.Model):
     _name = 'sysnotas.curso'
-    _rec_name = "curso_name"
+    _rec_name = "curs_nomb"
 
     curs_cod = fields.Integer(string = "Codigo", 
         required = True,
@@ -44,7 +44,7 @@ class curso(models.Model):
 
 class matricula(models.Model):
     _name = 'sysnotas.matricula'
-    _rec_name = "matricula_codigo"
+    _rec_name = "matr_cod"
 
     matr_cod = fields.Integer(string = "Codigo",
         help = "codigo de matricula",
@@ -69,6 +69,6 @@ class matricula(models.Model):
         )
     
     @api.multi
-    @api.depends('matricula_alumno_cui')
+    @api.depends('matr_alum_cui')
     def ObtObs(self):
-        self.matricula_alumno_obs = self.matricula_alumno_cui.alumno_obs
+        self.matr_alum_obs = self.matr_alum_cui.alumno_obs

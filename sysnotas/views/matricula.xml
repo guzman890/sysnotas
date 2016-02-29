@@ -33,10 +33,10 @@
                 <sheet>
                 <group name="group_top">
                     <group name="group_left">                
-                        <field name='matricula_codigo'/>
-                        <field name='matricula_alumno_cui'/>
-                        <field name='matricula_alumno_obs'/>
-                        <field name='matricula_curso_codigo'/>
+                        <field name='matr_cod'/>
+                        <field name='matr_alum_cui'/>
+                        <field name='matr_alum_obs'/>
+                        <field name='matr_curs_cod'/>
 
                     </group>
                 </group>
@@ -51,9 +51,9 @@
             <field name='model'>sysnotas.matricula</field>
             <field name='arch' type='xml'>
             <tree>
-                    <field name='matricula_codigo'/>
-                    <field name='matricula_alumno_cui'/>
-                    <field name='matricula_curso_codigo'/>
+                    <field name='matr_cod'/>
+                    <field name='matr_alum_cui'/>
+                    <field name='matr_curs_cod'/>
             </tree>
             </field>
         </record>

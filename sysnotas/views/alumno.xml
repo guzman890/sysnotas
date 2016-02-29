@@ -33,9 +33,9 @@
                 <sheet>
                 <group name="group_top">
                     <group name="group_left">                
-                        <field name='alumno_name'/>
-                        <field name='alumno_cui'/>
-                        <field name='alumno_obs'/>
+                        <field name='alum_nomb'/>
+                        <field name='alum_cui'/>
+                        <field name='alum_obs'/>
                     </group>
                 </group>
                 </sheet>
@@ -49,9 +49,9 @@
             <field name='model'>sysnotas.alumno</field>
             <field name='arch' type='xml'>
             <tree>
-                    <field name='alumno_name'/>
-                    <field name='alumno_cui'/>
-                    <field name='alumno_obs'/>
+                    <field name='alum_nomb'/>
+                    <field name='alum_cui'/>
+                    <field name='alum_obs'/>
             </tree>
             </field>
         </record>

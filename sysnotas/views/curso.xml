@@ -33,9 +33,9 @@
                 <sheet>
                 <group name="group_top">
                     <group name="group_left">                
-                        <field name='curso_name'/>
-                        <field name='curso_codigo'/>
-                        <field name='curso_creditos'/>
+                        <field name='curs_nomb'/>
+                        <field name='curs_cod'/>
+                        <field name='curs_cred'/>
                     </group>
                 </group>
                 </sheet>
@@ -49,9 +49,9 @@
             <field name='model'>sysnotas.curso</field>
             <field name='arch' type='xml'>
             <tree>
-                    <field name='curso_name'/>
-                    <field name='curso_codigo'/>
-                    <field name='curso_creditos'/>
+                    <field name='curs_nomb'/>
+                    <field name='curs_cod'/>
+                    <field name='curs_cred'/>
             </tree>
             </field>
         </record>
