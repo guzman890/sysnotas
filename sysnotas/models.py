@@ -72,3 +72,9 @@ class matricula(models.Model):
     @api.depends('matr_alum_cui')
     def ObtObs(self):
         self.matr_alum_obs = self.matr_alum_cui.alum_obs
+
+class matr_curs_rel(models.Model):
+    """docstring for matr_curs_rel"""
+    _name = 'sysnotas.matrcurs'
+    _rec_name = "matr_cod,curs_cod"
+        
