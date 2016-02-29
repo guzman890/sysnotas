@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <!-- Action to open alumno -->
+        <act_window 
+            id='do_alumno_action' 
+            name='alumno' 
+            res_model='sysnotas.alumno' 
+            view_mode='tree,form'/>
+
+        <menuitem 
+            id="second_left_menu_alumno" 
+            name="alumnos" 
+            parent="first_left_menu" 
+            action="do_alumno_action"/>
+        <!-- Full id location:
+             action="openacademy.course_list_action"
+             It is not required when it is the same module -->
+
+        <!-- view -->
+        <record id='view_form_alumno' model='ir.ui.view'>
+            <field name='name'>alumno Form</field>
+            <field name='model'>sysnotas.alumno</field>
+            <field name='arch' type='xml'>
+            <form>
+                <header>
+                </header>
+                <sheet>
+                <group name="group_top">
+                    <group name="group_left">                
+                        <field name='alumno_name'/>
+                        <field name='alumno_cui'/>
+                        <field name='alumno_obs'/>
+                    </group>
+                </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+        <!-- Tree -->
+        <record id="view_tree_alumno" model="ir.ui.view">
+            <field name='name'>alumno tree</field>
+            <field name='model'>sysnotas.alumno</field>
+            <field name='arch' type='xml'>
+            <tree>
+                    <field name='alumno_name'/>
+                    <field name='alumno_cui'/>
+                    <field name='alumno_obs'/>
+            </tree>
+            </field>
+        </record>
+    </data>
+</openerp>
