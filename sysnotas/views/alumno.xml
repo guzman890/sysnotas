@@ -34,6 +34,7 @@
                 <group name="group_top">
                     <group name="group_left">                
                         <field name='alum_nomb'/>
+                        <field name='alum_apel'/>
                         <field name='alum_cui'/>
                         <field name='alum_obs'/>
                     </group>
@@ -50,6 +51,7 @@
             <field name='arch' type='xml'>
             <tree>
                     <field name='alum_nomb'/>
+                    <field name='alum_apel'/>
                     <field name='alum_cui'/>
                     <field name='alum_obs'/>
             </tree>

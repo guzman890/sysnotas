@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api
+from openerp import models, fields, api, tools
+from openerp.exceptions import ValidationError
+
 
 class alumno(models.Model):
     _name = 'sysnotas.alumno'
@@ -14,9 +16,18 @@ class alumno(models.Model):
         size = 30,
         required = True
         )
+    alum_apel = fields.Text( string = "Apellidos", 
+        size = 30,
+        required = True
+        )
     alum_obs = fields.Text(string = "Observacion",
         help = "observaciones al alumno "
         )
+
+    _sql_constraints = [
+        ('alum_cui_uniq',
+         'UNIQUE (alum_cui)',
+         'El Código Punto no puede repetirse!')]
 
 
 class curso(models.Model):
@@ -73,8 +84,11 @@ class matricula(models.Model):
     def ObtObs(self):
         self.matr_alum_obs = self.matr_alum_cui.alum_obs
 
-class matr_curs_rel(models.Model):
-    """docstring for matr_curs_rel"""
+"""class matr_curs_rel(models.Model):
     _name = 'sysnotas.matrcurs'
-    _rec_name = "matr_cod,curs_cod"
+    _rec_name = "matr_curs_cod"
+
+    matr_cod =    
+
+    """
         
