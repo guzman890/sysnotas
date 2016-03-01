@@ -4,9 +4,10 @@
 	<!-- top level menu: no parent -->
     <menuitem id="top_menu" name="Sistema"/>
     <!-- A first level in the left side menu is needed before using action= attribute -->
-    <menuitem id="first_left_menu" name="Matriculas" parent="top_menu"/>
+    <menuitem id="first_left_menu" name="servidor" parent="top_menu"/>
         <!-- the following menuitem should appear *after*
              its parent openacademy_menu and *after* its
              action course_list_action -->    
+    <menuitem id="first_left_menu2" name="Matriculas" parent="top_menu"/>
   </data>
 </openerp>

@@ -16,7 +16,7 @@ class alumno(models.Model):
         size = 30,
         required = True
         )
-    alum_apel = fields.Text( string = "Apellidos", 
+    alum_apel = fields.Char( string = "Apellidos", 
         size = 30,
         required = True
         )
@@ -27,7 +27,7 @@ class alumno(models.Model):
     _sql_constraints = [
         ('alum_cui_uniq',
          'UNIQUE (alum_cui)',
-         'El Código Punto no puede repetirse!')]
+         'El CUI no puede repetirse!')]
 
 
 class curso(models.Model):
@@ -53,10 +53,13 @@ class curso(models.Model):
         )
     curs_curs_hrio = fields.One2many(
         'sysnotas.crsho',
-        'curs_curs_hrio_2',
-        string = 'relacion'
+        'curs_curs_hrio',
+        string = 'Relacion de horas'
         )
-
+    sql_constraints = [
+        ('curs_cod_unique',
+         'UNIQUE (curs_cod)',
+         'El codigo de curso no puede repetirse!')]
 
 
 class matricula(models.Model):
@@ -71,58 +74,88 @@ class matricula(models.Model):
         help = "nombre de matricula",
         size = 30
         )
-    matr_alum_obs = fields.Text(string = "Observacion", 
+    matr_alum_mst = fields.Text(string = "Nombre", 
         store = False,
-        compute = 'ObtObs'
+        compute = 'make_nombre'
         )
 
     """" relaciones """
     matr_alum_cui = fields.Many2one(
-        'sysnotas.alumno'
+        'sysnotas.alumno',
+        string = 'Cui de Alumno',
+        index = True
         )
 
     matr_curs_cod = fields.Many2many(
         'sysnotas.curso',
-        string = 'curs_cod'
+        string = 'Cursos'
         )
     
-    @api.multi
+    """ sql constraints"""
+    sql_constraints = [
+        ('matr_cod_unique',
+         'UNIQUE (matr_cod)',
+         'El codigo de matricula no puede repetirse!')]
+
+    sql_constraints = [
+        ('matr_alum_cui',
+         'UNIQUE (matr_alum_cui)',
+         'El codigo de alumno no puede repetirse!')]
+
+    @api.one
     @api.depends('matr_alum_cui')
-    def ObtObs(self):
-        self.matr_alum_obs = self.matr_alum_cui.alum_obs
+    def make_nombre(self):        
+        if self.matr_alum_cui:
+            self.matr_alum_mst = self.matr_alum_cui.alum_nomb +" "+ self.matr_alum_cui.alum_apel 
 
 class horario(models.Model):
     _name = 'sysnotas.hrio'
     _rec_name = "hrio_deno"
 
     hrio_deno = fields.Integer(
-        string = "denominacion",
+        string = "hora",
         required = True,
-        index = True
-        )    
+        index = True,
+        help = "ejemplo: 13, 14, 7"
+        )
+
+    sql_constraints = [
+        ('hrio_deno_unique',
+         'UNIQUE (hrio_deno)',
+         'Ya existe hora!')]    
 
 class tipohora(models.Model):
     _name = 'sysnotas.tiph'
     _rec_name = 'tiph_deno'
 
     tiph_deno = fields.Char(
-        string = "denominacion",
+        string = "Siglas",
         required = True,
         size = 2,
-        index = True
+        index = True,
+        help = "ejemplo: TE, LB, TP "
         )    
-    
+
+    sql_constraints = [
+        ('hrio_deno_unique',
+         'UNIQUE (hrio_deno)',
+         'Ya existe tipo!')] 
+
 class curs_hrio(models.Model):
     _name = 'sysnotas.crsho'
     _rec_name = 'crsho_show'
 
 
     crsho_tiph_cod = fields.Many2one(
-        'sysnotas.tiph')
+        'sysnotas.tiph',
+        string = 'Tipo'
+        )
     crsho_hrio_cod = fields.Many2one(
-        'sysnotas.hrio')
+        'sysnotas.hrio',
+        string = 'Horas'
+        )
 
-    curs_curs_hrio_2 = fields.Many2one(
+    curs_curs_hrio = fields.Many2one(
         'sysnotas.curso'
         )
     crsho_show = fields.Char(string = "mostrar",        

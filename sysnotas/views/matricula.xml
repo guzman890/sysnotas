@@ -16,7 +16,7 @@
         <menuitem 
             id="second_left_menu_matricula" 
             name="matriculas" 
-            parent="first_left_menu" 
+            parent="first_left_menu2" 
             action="do_matricula_action"/>
         <!-- Full id location:
              action="openacademy.course_list_action"
@@ -35,7 +35,7 @@
                     <group name="group_left">                
                         <field name='matr_cod'/>
                         <field name='matr_alum_cui'/>
-                        <field name='matr_alum_obs'/>
+                        <field name='matr_alum_mst'/>
                         <field name='matr_curs_cod'/>
 
                     </group>
