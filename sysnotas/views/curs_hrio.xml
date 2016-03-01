@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <!-- Action to open curs_horario -->
+        <act_window 
+            id='do_curs_hrio_action' 
+            name='curs_hrio' 
+            res_model='sysnotas.crsho' 
+            view_mode='tree,form'/>
+
+        <menuitem 
+            id="second_left_menu_curs_hrio" 
+            name="Horarios para cursos" 
+            parent="first_left_menu" 
+            action="do_curs_hrio_action"/>
+        <!-- Full id location:
+             action="openacademy.course_list_action"
+             It is not required when it is the same module -->
+        
+        <!-- view -->
+        <record id='view_form_curs_hrio' model='ir.ui.view'>
+            <field name='name'>curshrio Form</field>
+            <field name='model'>sysnotas.crsho</field>
+            <field name='arch' type='xml'>
+            <form>
+                <header>
+                </header>
+                <sheet>
+                <group name="group_top">
+                    <group name="group_left">                
+                        <field name='crsho_tiph_cod'/>
+                        <field name='crsho_hrio_cod'/>
+                        <field name='crsho_show'/>
+                    </group>
+                </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+        <!-- Tree -->
+        <record id="view_tree_curs_hrio" model="ir.ui.view">
+            <field name='name'>curshrio tree</field>
+            <field name='model'>sysnotas.crsho</field>
+            <field name='arch' type='xml'>
+            <tree>
+                        <field name='crsho_tiph_cod'/>
+                        <field name='crsho_hrio_cod'/>
+            </tree>
+            </field>
+        </record>
+    </data>
+</openerp>
