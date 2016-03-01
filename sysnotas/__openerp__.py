@@ -29,6 +29,9 @@
         'views/curso.xml',
         'views/alumno.xml',
         'views/matricula.xml',
+        'views/curs_hrio.xml',
+        'views/tipohora.xml',
+        'views/horario.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

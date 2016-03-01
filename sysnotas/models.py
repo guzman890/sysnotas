@@ -6,7 +6,7 @@ from openerp.exceptions import ValidationError
 
 class alumno(models.Model):
     _name = 'sysnotas.alumno'
-    _rec_name = "alum_nomb"
+    _rec_name = "alum_cui"
     
     alum_cui = fields.Integer(string = "CUI", 
         required = True,
@@ -51,6 +51,12 @@ class curso(models.Model):
         'sysnotas.matricula',
         string = 'matr_cod' 
         )
+    curs_curs_hrio = fields.One2many(
+        'sysnotas.crsho',
+        'curs_curs_hrio_2',
+        string = 'relacion'
+        )
+
 
 
 class matricula(models.Model):
@@ -72,7 +78,8 @@ class matricula(models.Model):
 
     """" relaciones """
     matr_alum_cui = fields.Many2one(
-        'sysnotas.alumno')
+        'sysnotas.alumno'
+        )
 
     matr_curs_cod = fields.Many2many(
         'sysnotas.curso',
@@ -84,11 +91,48 @@ class matricula(models.Model):
     def ObtObs(self):
         self.matr_alum_obs = self.matr_alum_cui.alum_obs
 
-"""class matr_curs_rel(models.Model):
-    _name = 'sysnotas.matrcurs'
-    _rec_name = "matr_curs_cod"
+class horario(models.Model):
+    _name = 'sysnotas.hrio'
+    _rec_name = "hrio_deno"
 
-    matr_cod =    
+    hrio_deno = fields.Integer(
+        string = "denominacion",
+        required = True,
+        index = True
+        )    
 
-    """
-        
+class tipohora(models.Model):
+    _name = 'sysnotas.tiph'
+    _rec_name = 'tiph_deno'
+
+    tiph_deno = fields.Char(
+        string = "denominacion",
+        required = True,
+        size = 2,
+        index = True
+        )    
+    
+class curs_hrio(models.Model):
+    _name = 'sysnotas.crsho'
+    _rec_name = 'crsho_show'
+
+
+    crsho_tiph_cod = fields.Many2one(
+        'sysnotas.tiph')
+    crsho_hrio_cod = fields.Many2one(
+        'sysnotas.hrio')
+
+    curs_curs_hrio_2 = fields.Many2one(
+        'sysnotas.curso'
+        )
+    crsho_show = fields.Char(string = "mostrar",        
+        compute = 'make_show',
+        store = True,
+        )
+
+    @api.multi
+    @api.depends('crsho_tiph_cod', 'crsho_hrio_cod')
+    def make_show(self):        
+        if self.crsho_tiph_cod and self.crsho_hrio_cod:
+            self.crsho_show = self.crsho_tiph_cod.tiph_deno + str(self.crsho_hrio_cod.hrio_deno)
+            print self.crsho_show
