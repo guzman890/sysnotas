@@ -73,12 +73,13 @@ class curso(models.Model):
             #print type(self.curs_curs_hrio)
         print "------------------------"
         cursos = self.env['sysnotas.crsho']
-        _curso = cursos.search([])
+        #_curso = cursos.search([])
+        _curso = self.curs_curs_hrio
         #print _curso[0].crsho_show
 
             #print _curso[0].crsho_show
-        for c in _curso:
-            self.curs_comp+=c.crsho_show+" "
+        for c in range(0,len(_curso)):
+            self.curs_comp+=_curso[c].crsho_tiph_cod[c]+" "+_curso.crsho_hrio_cod[c]
             
             #print len(self.curs_curs_hrio)
             #print self.curs_curs_hrio[0].crsho_show
@@ -184,7 +185,7 @@ class curs_hrio(models.Model):
         string="relacion curso hora"
         )
     crsho_show = fields.Char(string = "Mostrar",        
-        #compute = 'make_show',
+        compute = 'make_show',
         size = 5,
         store = True,
         index = True
