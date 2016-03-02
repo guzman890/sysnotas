@@ -9,7 +9,7 @@
         <!-- Action to open curs_horario -->
         <act_window 
             id='do_curs_hrio_action' 
-            name='curs_hrio' 
+            name='Horarios para Cursos' 
             res_model='sysnotas.crsho' 
             view_mode='tree,form'/>
 

@@ -9,13 +9,13 @@
         <!-- Action to open tipo hora -->
         <act_window 
             id='do_tipohorario_action' 
-            name='tipos de horarios' 
+            name='Tipos de horarios' 
             res_model='sysnotas.tiph' 
             view_mode='tree,form'/>
 
         <menuitem 
             id="second_left_menu_tipohorario" 
-            name="tipos de horarios" 
+            name="Tipos de horarios" 
             parent="first_left_menu" 
             action="do_tipohorario_action"/>
         <!-- Full id location:

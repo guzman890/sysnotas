@@ -43,7 +43,7 @@ class curso(models.Model):
         size = 30,
         required = True
         )
-    curs_cred = fields.Integer(string = "creditos",
+    curs_cred = fields.Integer(string = "Creditos",
         help = "cantidad de creditos "
         )
 
@@ -114,7 +114,7 @@ class horario(models.Model):
     _rec_name = "hrio_deno"
 
     hrio_deno = fields.Integer(
-        string = "hora",
+        string = "Hora",
         required = True,
         index = True,
         help = "ejemplo: 13, 14, 7"
@@ -159,7 +159,7 @@ class curs_hrio(models.Model):
     curs_curs_hrio = fields.Many2one(
         'sysnotas.curso'
         )
-    crsho_show = fields.Char(string = "mostrar",        
+    crsho_show = fields.Char(string = "Mostrar",        
         compute = 'make_show',
         store = True,
         )

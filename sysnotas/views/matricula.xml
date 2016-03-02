@@ -9,13 +9,13 @@
         <!-- Action to open alumno -->
         <act_window 
             id='do_matricula_action' 
-            name='matricula' 
+            name='Matricula' 
             res_model='sysnotas.matricula' 
             view_mode='tree,form'/>
 
         <menuitem 
             id="second_left_menu_matricula" 
-            name="matriculas" 
+            name="Matriculas" 
             parent="first_left_menu2" 
             action="do_matricula_action"/>
         <!-- Full id location:

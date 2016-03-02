@@ -9,7 +9,7 @@
         <!-- Action to open alumno -->
         <act_window 
             id='do_curso_action' 
-            name='curso' 
+            name='Curso' 
             res_model='sysnotas.curso' 
             view_mode='tree,form'/>
 
