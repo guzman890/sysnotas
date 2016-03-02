@@ -23,6 +23,7 @@ class alumno(models.Model):
     alum_obs = fields.Text(string = "Observacion",
         help = "observaciones al alumno "
         )
+    #alum_foto = fields.binary
 
     _sql_constraints = [
         ('alum_cui_uniq',
@@ -97,10 +98,10 @@ class matricula(models.Model):
          'UNIQUE (matr_cod)',
          'El codigo de matricula no puede repetirse!')]
 
-    sql_constraints = [
-        ('matr_alum_cui',
-         'UNIQUE (matr_alum_cui)',
-         'El codigo de alumno no puede repetirse!')]
+    #sql_constraints = [
+    #    ('matr_alum_cui_2',
+    #     'UNIQUE (matr_alum_cui)',
+    #     'El codigo de alumno no puede repetirse!')]
 
     @api.one
     @api.depends('matr_alum_cui')
