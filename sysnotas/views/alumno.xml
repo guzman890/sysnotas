@@ -11,7 +11,7 @@
             id='do_alumno_action' 
             name='alumno' 
             res_model='sysnotas.alumno' 
-            view_mode='tree,form'/>
+            view_mode='tree,form,search'/>
 
         <menuitem 
             id="second_left_menu_alumno" 
@@ -37,6 +37,7 @@
                         <field name='alum_apel'/>
                         <field name='alum_cui'/>
                         <field name='alum_obs'/>
+                        <field name='alum_foto' widget='image' width="200" height="200"/>   
                     </group>
                 </group>
                 </sheet>

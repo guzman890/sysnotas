@@ -2,6 +2,7 @@
 
 from openerp import models, fields, api, tools
 from openerp.exceptions import ValidationError
+from re import compile
 
 
 class alumno(models.Model):
@@ -24,12 +25,20 @@ class alumno(models.Model):
         help = "observaciones al alumno "
         )
     #alum_foto = fields.binary
-
+    alum_foto = fields.Binary(string = "Foto"
+        )
     _sql_constraints = [
         ('alum_cui_uniq',
          'UNIQUE (alum_cui)',
          'El CUI no puede repetirse!')]
 
+    @api.one
+    @api.constrains('alum_cui')
+    def alum_cui_check(self):
+        pattern = compile("^[1-9]{8}$")
+        if not pattern.match(str(self.alum_cui)):
+            msg = "El campo CUI solo puede tener 8 números !"
+            raise ValidationError(msg)
 
 class curso(models.Model):
     _name = 'sysnotas.curso'
@@ -46,6 +55,11 @@ class curso(models.Model):
     curs_cred = fields.Integer(string = "creditos",
         help = "cantidad de creditos "
         )
+    curs_vist = fields.Text(string = "vista",
+        help = "practica ",
+        compute= 'show',
+        store = False
+        )
 
     """ relaciones """
     curs_matr_cod = fields.Many2many(
@@ -61,7 +75,18 @@ class curso(models.Model):
         ('curs_cod_unique',
          'UNIQUE (curs_cod)',
          'El codigo de curso no puede repetirse!')]
-
+    
+    @api.one
+    @api.depends('curs_curs_hrio')
+    def show(self):
+        if self.curs_curs_hrio :
+            self.curs_vist = ""
+            var_list = self.curs_curs_hrio.search([])
+            self.curs_vist+=str((var_list[0]).crsho_tiph_cod.tiph_deno)
+            self.curs_vist+=str((var_list[0]).crsho_hrio_cod.hrio_deno)+","
+            self.curs_vist+=str((var_list[1]).crsho_tiph_cod.tiph_deno)
+            self.curs_vist+=str((var_list[1]).crsho_hrio_cod.hrio_deno)
+            
 
 class matricula(models.Model):
     _name = 'sysnotas.matricula'
@@ -144,8 +169,6 @@ class tipohora(models.Model):
 
 class curs_hrio(models.Model):
     _name = 'sysnotas.crsho'
-    _rec_name = 'crsho_show'
-
 
     crsho_tiph_cod = fields.Many2one(
         'sysnotas.tiph',
@@ -159,14 +182,3 @@ class curs_hrio(models.Model):
     curs_curs_hrio = fields.Many2one(
         'sysnotas.curso'
         )
-    crsho_show = fields.Char(string = "mostrar",        
-        compute = 'make_show',
-        store = True,
-        )
-
-    @api.multi
-    @api.depends('crsho_tiph_cod', 'crsho_hrio_cod')
-    def make_show(self):        
-        if self.crsho_tiph_cod and self.crsho_hrio_cod:
-            self.crsho_show = self.crsho_tiph_cod.tiph_deno + str(self.crsho_hrio_cod.hrio_deno)
-            print self.crsho_show
