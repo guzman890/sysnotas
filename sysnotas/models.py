@@ -157,11 +157,14 @@ class curs_hrio(models.Model):
         )
 
     curs_curs_hrio = fields.Many2one(
-        'sysnotas.curso'
+        'sysnotas.curso',
+        string="relacion curso hora"
         )
     crsho_show = fields.Char(string = "Mostrar",        
         compute = 'make_show',
-        store = True
+        size = 5,
+        store = True,
+        index = True
         )
 
     @api.multi

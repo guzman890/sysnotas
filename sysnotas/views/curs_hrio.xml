@@ -51,6 +51,7 @@
             <tree>
                         <field name='crsho_tiph_cod'/>
                         <field name='crsho_hrio_cod'/>
+                        <field name='crsho_show'/>
             </tree>
             </field>
         </record>

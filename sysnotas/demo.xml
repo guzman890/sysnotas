@@ -1,9 +1,14 @@
 <openerp>
     <data>
         <!--  -->
-        <!--   <record id="object0" model="sysnotas.sysnotas"> -->
-        <!--     <field name="name">Object 0</field> -->
-        <!--   </record> -->
+        
+        <record id="object0" model="sysnotas.alumno">
+            <field name='alum_nomb'>Johan</field>
+            <field name='alum_apel'>Cayo Carrasco</field>
+            <field name='alum_cui'>20137894</field>
+            <field name='alum_obs'>GG</field>
+        </record>
+
         <!--  -->
         <!--   <record id="object1" model="sysnotas.sysnotas"> -->
         <!--     <field name="name">Object 1</field> -->
