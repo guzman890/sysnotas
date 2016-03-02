@@ -81,7 +81,7 @@ class curso(models.Model):
     def show(self):
         if self.curs_curs_hrio :
             self.curs_vist = ""
-            var_list = self.curs_curs_hrio.search([])
+            var_list = self.curs_curs_hrio
             self.curs_vist+=str((var_list[0]).crsho_tiph_cod.tiph_deno)
             self.curs_vist+=str((var_list[0]).crsho_hrio_cod.hrio_deno)+","
             self.curs_vist+=str((var_list[1]).crsho_tiph_cod.tiph_deno)
