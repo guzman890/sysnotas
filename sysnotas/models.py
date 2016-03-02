@@ -47,6 +47,10 @@ class curso(models.Model):
         help = "cantidad de creditos "
         )
 
+    curs_comp = fields.Text(string="gg",
+        compute = "_show"
+        )
+
     """ relaciones """
     curs_matr_cod = fields.Many2many(
         'sysnotas.matricula',
@@ -61,6 +65,25 @@ class curso(models.Model):
         ('curs_cod_unique',
          'UNIQUE (curs_cod)',
          'El codigo de curso no puede repetirse!')]
+    @api.one
+    @api.depends('curs_curs_hrio')
+    def _show(self):        
+        #if self.curs_curs_hrio:
+        self.curs_comp = " "
+            #print type(self.curs_curs_hrio)
+        print "------------------------"
+        cursos = self.env['sysnotas.crsho']
+        _curso = cursos.search([])
+        #print _curso[0].crsho_show
+
+            #print _curso[0].crsho_show
+        for c in _curso:
+            self.curs_comp+=c.crsho_show+" "
+            
+            #print len(self.curs_curs_hrio)
+            #print self.curs_curs_hrio[0].crsho_show
+            #for item in self.curs_curs_hrio:
+                #self.curs_comp+=str(item[0])
 
 
 class matricula(models.Model):
@@ -161,7 +184,7 @@ class curs_hrio(models.Model):
         string="relacion curso hora"
         )
     crsho_show = fields.Char(string = "Mostrar",        
-        compute = 'make_show',
+        #compute = 'make_show',
         size = 5,
         store = True,
         index = True
@@ -169,7 +192,13 @@ class curs_hrio(models.Model):
 
     @api.multi
     @api.depends('crsho_tiph_cod', 'crsho_hrio_cod')
-    def make_show(self):        
+    def make_show(self):
+        print '4564654  '
+        print 'tipo hora', self.crsho_tiph_cod
+        print 'horario', self.crsho_hrio_cod      
         if self.crsho_tiph_cod and self.crsho_hrio_cod:
-            self.crsho_show = self.crsho_tiph_cod.tiph_deno +"-"+ str(self.crsho_hrio_cod.hrio_deno)
+            print "*********************************************"
+            #self.crsho_show = self.crsho_tiph_cod.tiph_deno +"-"+ str(self.crsho_hrio_cod.hrio_deno)
+        #else:
+         #   self.crsho_show = 'asdasd'
             #print self.crsho_show
