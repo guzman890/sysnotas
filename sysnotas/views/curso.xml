@@ -54,6 +54,7 @@
                     <field name='curs_nomb'/>
                     <field name='curs_cod'/>
                     <field name='curs_cred'/>
+                    <field name='curs_curs_hrio'/>
             </tree>
             </field>
         </record>

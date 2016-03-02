@@ -57,7 +57,7 @@ class curso(models.Model):
         'curs_curs_hrio',
         string = 'Relacion de horas'
         )
-    sql_constraints = [
+    _sql_constraints = [
         ('curs_cod_unique',
          'UNIQUE (curs_cod)',
          'El codigo de curso no puede repetirse!')]
@@ -93,12 +93,12 @@ class matricula(models.Model):
         )
     
     """ sql constraints"""
-    sql_constraints = [
+    _sql_constraints = [
         ('matr_cod_unique',
          'UNIQUE (matr_cod)',
          'El codigo de matricula no puede repetirse!')]
 
-    #sql_constraints = [
+    #_sql_constraints = [
     #    ('matr_alum_cui_2',
     #     'UNIQUE (matr_alum_cui)',
     #     'El codigo de alumno no puede repetirse!')]
@@ -120,7 +120,7 @@ class horario(models.Model):
         help = "ejemplo: 13, 14, 7"
         )
 
-    sql_constraints = [
+    _sql_constraints = [
         ('hrio_deno_unique',
          'UNIQUE (hrio_deno)',
          'Ya existe hora!')]    
@@ -137,7 +137,7 @@ class tipohora(models.Model):
         help = "ejemplo: TE, LB, TP "
         )    
 
-    sql_constraints = [
+    _sql_constraints = [
         ('hrio_deno_unique',
          'UNIQUE (hrio_deno)',
          'Ya existe tipo!')] 
@@ -161,12 +161,12 @@ class curs_hrio(models.Model):
         )
     crsho_show = fields.Char(string = "Mostrar",        
         compute = 'make_show',
-        store = True,
+        store = True
         )
 
     @api.multi
     @api.depends('crsho_tiph_cod', 'crsho_hrio_cod')
     def make_show(self):        
         if self.crsho_tiph_cod and self.crsho_hrio_cod:
-            self.crsho_show = self.crsho_tiph_cod.tiph_deno + str(self.crsho_hrio_cod.hrio_deno)
-            print self.crsho_show
+            self.crsho_show = self.crsho_tiph_cod.tiph_deno +"-"+ str(self.crsho_hrio_cod.hrio_deno)
+            #print self.crsho_show
