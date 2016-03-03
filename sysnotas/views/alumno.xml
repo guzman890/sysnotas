@@ -9,13 +9,13 @@
         <!-- Action to open alumno -->
         <act_window 
             id='do_alumno_action' 
-            name='alumno' 
+            name='Alumno' 
             res_model='sysnotas.alumno' 
             view_mode='tree,form,search'/>
 
         <menuitem 
             id="second_left_menu_alumno" 
-            name="alumnos" 
+            name="Alumnos" 
             parent="first_left_menu" 
             action="do_alumno_action"/>
         <!-- Full id location:

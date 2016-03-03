@@ -9,7 +9,7 @@
         <!-- Action to open curs_horario -->
         <act_window 
             id='do_curs_hrio_action' 
-            name='curs_hrio' 
+            name='Horarios para cursos' 
             res_model='sysnotas.crsho' 
             view_mode='tree,form'/>
 
@@ -35,7 +35,6 @@
                     <group name="group_left">                
                         <field name='crsho_tiph_cod'/>
                         <field name='crsho_hrio_cod'/>
-                        <field name='crsho_show'/>
                     </group>
                 </group>
                 </sheet>

@@ -9,13 +9,13 @@
         <!-- Action to open hoario -->
         <act_window 
             id='do_horario_action' 
-            name='horario' 
+            name='Horario' 
             res_model='sysnotas.hrio' 
             view_mode='tree,form'/>
 
         <menuitem 
             id="second_left_menu_horario" 
-            name="horarios" 
+            name="Horarios" 
             parent="first_left_menu" 
             action="do_horario_action"/>
         <!-- Full id location:
