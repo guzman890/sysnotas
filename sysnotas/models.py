@@ -47,7 +47,7 @@ class curso(models.Model):
         help = "cantidad de creditos "
         )
 
-    curs_comp = fields.Text(string="gg",
+    curs_comp = fields.Text(string="Relacion de Horas",
         compute = "_show"
         )
 
@@ -68,23 +68,10 @@ class curso(models.Model):
     @api.one
     @api.depends('curs_curs_hrio')
     def _show(self):        
-        #if self.curs_curs_hrio:
         self.curs_comp = " "
-            #print type(self.curs_curs_hrio)
-        print "------------------------"
-        cursos = self.env['sysnotas.crsho']
-        #_curso = cursos.search([])
         _curso = self.curs_curs_hrio
-        #print _curso[0].crsho_show
-
-            #print _curso[0].crsho_show
         for c in range(0,len(_curso)):
-            self.curs_comp+=_curso[c].crsho_tiph_cod[c]+" "+_curso.crsho_hrio_cod[c]
-            
-            #print len(self.curs_curs_hrio)
-            #print self.curs_curs_hrio[0].crsho_show
-            #for item in self.curs_curs_hrio:
-                #self.curs_comp+=str(item[0])
+            self.curs_comp+=str(_curso[c].crsho_tiph_cod.tiph_deno)+"-"+str(_curso[c].crsho_hrio_cod.hrio_deno)+" "
 
 
 class matricula(models.Model):
@@ -122,10 +109,10 @@ class matricula(models.Model):
          'UNIQUE (matr_cod)',
          'El codigo de matricula no puede repetirse!')]
 
-    #_sql_constraints = [
-    #    ('matr_alum_cui_2',
-    #     'UNIQUE (matr_alum_cui)',
-    #     'El codigo de alumno no puede repetirse!')]
+    _sql_constraints = [
+        ('matr_alum_cui_2',
+         'UNIQUE (matr_alum_cui)',
+         'El codigo de alumno no puede repetirse!')]
 
     @api.one
     @api.depends('matr_alum_cui')
@@ -168,7 +155,7 @@ class tipohora(models.Model):
 
 class curs_hrio(models.Model):
     _name = 'sysnotas.crsho'
-    _rec_name = 'crsho_show'
+    #_rec_name = 'crsho_show'
 
 
     crsho_tiph_cod = fields.Many2one(
@@ -184,22 +171,3 @@ class curs_hrio(models.Model):
         'sysnotas.curso',
         string="relacion curso hora"
         )
-    crsho_show = fields.Char(string = "Mostrar",        
-        compute = 'make_show',
-        size = 5,
-        store = True,
-        index = True
-        )
-
-    @api.multi
-    @api.depends('crsho_tiph_cod', 'crsho_hrio_cod')
-    def make_show(self):
-        print '4564654  '
-        print 'tipo hora', self.crsho_tiph_cod
-        print 'horario', self.crsho_hrio_cod      
-        if self.crsho_tiph_cod and self.crsho_hrio_cod:
-            print "*********************************************"
-            #self.crsho_show = self.crsho_tiph_cod.tiph_deno +"-"+ str(self.crsho_hrio_cod.hrio_deno)
-        #else:
-         #   self.crsho_show = 'asdasd'
-            #print self.crsho_show

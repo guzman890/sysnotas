@@ -35,7 +35,6 @@
                     <group name="group_left">                
                         <field name='crsho_tiph_cod'/>
                         <field name='crsho_hrio_cod'/>
-                        <field name='crsho_show'/>
                     </group>
                 </group>
                 </sheet>
@@ -51,7 +50,6 @@
             <tree editable="bottom">
                         <field name='crsho_tiph_cod'/>
                         <field name='crsho_hrio_cod'/>
-                        <field name='crsho_show' readonly="1" widget="many2many_list"/>
             </tree>
             </field>
         </record>
