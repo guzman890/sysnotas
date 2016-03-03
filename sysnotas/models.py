@@ -48,47 +48,46 @@ class Alumno(models.Model):
             raise ValidationError(msg)
 
 
-class curso(models.Model):
+class Curso(models.Model):
     _name = 'sysnotas.curso'
-    _rec_name = "curs_nomb"
+    _rec_name = "curso_nombre"
 
-    curs_cod = fields.Integer(string = "Codigo", 
-        required = True,
-        index = True
-        )
-    curs_nomb = fields.Char( string = "Nombre", 
-        size = 30,
-        required = True
-        )
-    curs_cred = fields.Integer(string = "creditos",
-        help = "cantidad de creditos "
-        )
-    curs_comp = fields.Text(string="Relacion de Horas",
-        compute = "_show"
-        )
+    curso_codigo = fields.Integer(string="Codigo Curso",
+                                  required=True,
+                                  index=True)
 
-    """ relaciones """
+    curso_nombre = fields.Char(string="Nombre Curso",
+                               size=30,
+                               required=True)
+
+    creditos = fields.Integer(string="Créditos",
+                              help="Cantidad de créditos")
+
+    curs_comp = fields.Char(string="Relacion de Horas",
+                            compute="_show")
+
+    # relaciones
     curs_matr_cod = fields.Many2many(
         'sysnotas.matricula',
-        string = 'matr_cod' 
-        )
-    curs_curs_hrio = fields.One2many(
+        string='matr_cod')
+
+    curso_horario_rel = fields.One2many(
         'sysnotas.curso.horario',
-        'curs_curs_hrio',
-        string = 'Relacion de horas'
-        )
+        'curso',
+        string='Relacion de horas')
+
     _sql_constraints = [
         ('curs_cod_unique',
-         'UNIQUE (curs_cod)',
-         'El codigo de curso no puede repetirse!')]
-    
+         'UNIQUE (curs_codigo)',
+         'El codigo del curso no puede repetirse!')]
+
     @api.one
-    @api.depends('curs_curs_hrio')
-    def _show(self):        
+    @api.depends('curso_horario_rel')
+    def _show(self):
         self.curs_comp = " "
-        _curso = self.curs_curs_hrio
-        for c in range(0,len(_curso)):
-            self.curs_comp+=str(_curso[c].crsho_tiph_cod.tiph_deno)+"-"+str(_curso[c].crsho_hrio_cod.hrio_deno)+" "
+        for c in self.curso_horario_rel:
+            self.curs_comp += str(c.tipo_horario.denominacion) + "-" + \
+                              str(c.horario.hora) + " "
 
 
 class Matricula(models.Model):
@@ -171,7 +170,7 @@ class CursoHorario(models.Model):
         'sysnotas.horario',
         string='Horas')
 
-    curs_curs_hrio = fields.Many2one(
+    curso = fields.Many2one(
         'sysnotas.curso',
         string="Relación curso hora"
-        )
+    )

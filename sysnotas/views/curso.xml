@@ -32,11 +32,11 @@
                 </header>
                 <sheet>
                 <group name="group_top">
-                    <group name="group_left">                
-                        <field name='curs_nomb'/>
-                        <field name='curs_cod'/>
-                        <field name='curs_cred'/>
-                        <field name='curs_curs_hrio'/>
+                  <group name="group_left">                
+                    <field name='curso_nombre'/>
+                    <field name='curso_codigo'/>
+                    <field name='creditos'/>
+                    <field name='curso_horario_rel'/>
 
                     </group>
                 </group>
@@ -51,9 +51,9 @@
             <field name='model'>sysnotas.curso</field>
             <field name='arch' type='xml'>
             <tree>
-                    <field name='curs_nomb'/>
-                    <field name='curs_cod'/>
-                    <field name='curs_cred'/>
+                    <field name='curso_nombre'/>
+                    <field name='curso_codigo'/>
+                    <field name='creditos'/>
                     <field name='curs_comp'/>
             </tree>
             </field>
