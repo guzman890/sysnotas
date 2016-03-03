@@ -1,44 +1,52 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api, tools
+from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from re import compile
 
 
-class alumno(models.Model):
+class Alumno(models.Model):
     _name = 'sysnotas.alumno'
-    _rec_name = "alum_cui"
-    
-    alum_cui = fields.Integer(string = "CUI", 
-        required = True,
-        index = True
-        )
-    alum_nomb = fields.Char( string = "Nombre", 
-        size = 30,
-        required = True
-        )
-    alum_apel = fields.Char( string = "Apellidos", 
-        size = 30,
-        required = True
-        )
-    alum_obs = fields.Text(string = "Observacion",
-        help = "observaciones al alumno "
-        )
-    #alum_foto = fields.binary
-    alum_foto = fields.Binary(string = "Foto"
-        )
+    _rec_name = "cui"
+
+    cui = fields.Integer(string="CUI",
+                         required=True,
+                         index=True)
+
+    nombre = fields.Char(string="Nombre",
+                         size=30,
+                         required=True)
+
+    apellido = fields.Char(string="Apellidos",
+                           size=30,
+                           required=True)
+
+    observacion = fields.Text(string="Observación",
+                              help="Observaciones al alumno ")
+
+    foto = fields.Binary(string="Foto")
+
     _sql_constraints = [
         ('alum_cui_uniq',
          'UNIQUE (alum_cui)',
          'El CUI no puede repetirse!')]
 
     @api.one
-    @api.constrains('alum_cui')
+    @api.constrains('nombre')
+    def check_value_re(self):
+        pattern = compile("^[a-zA-Z]+$")
+        if not pattern.match(self.nombre):
+            msg = 'El campo Nombre sólo puede tener letras!'
+            raise ValidationError(msg)
+
+    @api.one
+    @api.constrains('cui')
     def alum_cui_check(self):
         pattern = compile("^[1-9]{8}$")
-        if not pattern.match(str(self.alum_cui)):
-            msg = "El campo CUI solo puede tener 8 números !"
+        if not pattern.match(str(self.cui)):
+            msg = "El campo CUI debe tener 8 números !"
             raise ValidationError(msg)
+
 
 class curso(models.Model):
     _name = 'sysnotas.curso'
