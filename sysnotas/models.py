@@ -55,10 +55,8 @@ class curso(models.Model):
     curs_cred = fields.Integer(string = "creditos",
         help = "cantidad de creditos "
         )
-    curs_vist = fields.Text(string = "vista",
-        help = "practica ",
-        compute= 'show',
-        store = False
+    curs_comp = fields.Text(string="Relacion de Horas",
+        compute = "_show"
         )
 
     """ relaciones """
@@ -71,21 +69,18 @@ class curso(models.Model):
         'curs_curs_hrio',
         string = 'Relacion de horas'
         )
-    sql_constraints = [
+    _sql_constraints = [
         ('curs_cod_unique',
          'UNIQUE (curs_cod)',
          'El codigo de curso no puede repetirse!')]
     
     @api.one
     @api.depends('curs_curs_hrio')
-    def show(self):
-        if self.curs_curs_hrio :
-            self.curs_vist = ""
-            var_list = self.curs_curs_hrio
-            self.curs_vist+=str((var_list[0]).crsho_tiph_cod.tiph_deno)
-            self.curs_vist+=str((var_list[0]).crsho_hrio_cod.hrio_deno)+","
-            self.curs_vist+=str((var_list[1]).crsho_tiph_cod.tiph_deno)
-            self.curs_vist+=str((var_list[1]).crsho_hrio_cod.hrio_deno)
+    def _show(self):        
+        self.curs_comp = " "
+        _curso = self.curs_curs_hrio
+        for c in range(0,len(_curso)):
+            self.curs_comp+=str(_curso[c].crsho_tiph_cod.tiph_deno)+"-"+str(_curso[c].crsho_hrio_cod.hrio_deno)+" "
             
 
 class matricula(models.Model):
@@ -118,7 +113,7 @@ class matricula(models.Model):
         )
     
     """ sql constraints"""
-    sql_constraints = [
+    _sql_constraints = [
         ('matr_cod_unique',
          'UNIQUE (matr_cod)',
          'El codigo de matricula no puede repetirse!')]
@@ -145,7 +140,7 @@ class horario(models.Model):
         help = "ejemplo: 13, 14, 7"
         )
 
-    sql_constraints = [
+    _sql_constraints = [
         ('hrio_deno_unique',
          'UNIQUE (hrio_deno)',
          'Ya existe hora!')]    
@@ -162,9 +157,9 @@ class tipohora(models.Model):
         help = "ejemplo: TE, LB, TP "
         )    
 
-    sql_constraints = [
-        ('hrio_deno_unique',
-         'UNIQUE (hrio_deno)',
+    _sql_constraints = [
+        ('tiph_deno_unique',
+         'UNIQUE (tiph_deno)',
          'Ya existe tipo!')] 
 
 class curs_hrio(models.Model):
@@ -180,5 +175,6 @@ class curs_hrio(models.Model):
         )
 
     curs_curs_hrio = fields.Many2one(
-        'sysnotas.curso'
+        'sysnotas.curso',
+        string="relacion curso hora"
         )
