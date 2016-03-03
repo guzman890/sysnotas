@@ -137,21 +137,20 @@ class matricula(models.Model):
         if self.matr_alum_cui:
             self.matr_alum_mst = self.matr_alum_cui.alum_nomb +" "+ self.matr_alum_cui.alum_apel 
 
-class horario(models.Model):
-    _name = 'sysnotas.hrio'
+
+class Horario(models.Model):
+    _name = 'sysnotas.horario'
     _rec_name = "hrio_deno"
 
-    hrio_deno = fields.Integer(
-        string = "hora",
-        required = True,
-        index = True,
-        help = "ejemplo: 13, 14, 7"
-        )
+    hora = fields.Integer(string="Hora",
+                          required=True,
+                          index=True,
+                          help="Ejemplo: 13, 14, 7")
 
     _sql_constraints = [
         ('hrio_deno_unique',
          'UNIQUE (hrio_deno)',
-         'Ya existe hora!')]    
+         'Ya existe hora!')]
 
 class tipohora(models.Model):
     _name = 'sysnotas.tiph'
