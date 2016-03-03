@@ -140,7 +140,7 @@ class matricula(models.Model):
 
 class Horario(models.Model):
     _name = 'sysnotas.horario'
-    _rec_name = "hrio_deno"
+    _rec_name = "hora"
 
     hora = fields.Integer(string="Hora",
                           required=True,
@@ -149,25 +149,24 @@ class Horario(models.Model):
 
     _sql_constraints = [
         ('hrio_deno_unique',
-         'UNIQUE (hrio_deno)',
+         'UNIQUE (hora)',
          'Ya existe hora!')]
 
-class tipohora(models.Model):
-    _name = 'sysnotas.tiph'
-    _rec_name = 'tiph_deno'
 
-    tiph_deno = fields.Char(
-        string = "Siglas",
-        required = True,
-        size = 2,
-        index = True,
-        help = "ejemplo: TE, LB, TP "
-        )    
+class TipoHorario(models.Model):
+    _name = 'sysnotas.tipohorario'
+    _rec_name = 'denominacion'
+
+    denominacion = fields.Char(string="Siglas",
+                               required=True,
+                               size=2,
+                               index=True,
+                               help="Ejemplo: TE, LB, TP ")
 
     _sql_constraints = [
         ('tiph_deno_unique',
-         'UNIQUE (tiph_deno)',
-         'Ya existe tipo!')] 
+         'UNIQUE (denominacion)',
+         'Ya existe tipo!')]
 
 class curs_hrio(models.Model):
     _name = 'sysnotas.crsho'
