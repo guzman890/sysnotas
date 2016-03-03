@@ -89,53 +89,44 @@ class curso(models.Model):
         _curso = self.curs_curs_hrio
         for c in range(0,len(_curso)):
             self.curs_comp+=str(_curso[c].crsho_tiph_cod.tiph_deno)+"-"+str(_curso[c].crsho_hrio_cod.hrio_deno)+" "
-            
 
-class matricula(models.Model):
+
+class Matricula(models.Model):
     _name = 'sysnotas.matricula'
-    _rec_name = "matr_cod"
+    _rec_name = "codigo"
 
-    matr_cod = fields.Integer(string = "Codigo",
-        help = "codigo de matricula",
-        index = True
-        )
-    matr_nomb = fields.Char(string = "Codigo",
-        help = "nombre de matricula",
-        size = 30
-        )
-    matr_alum_mst = fields.Text(string = "Nombre", 
-        store = False,
-        compute = 'make_nombre'
-        )
+    codigo = fields.Integer(string="Código",
+                            help="Código de matrícula",
+                            index=True)
 
-    """" relaciones """
-    matr_alum_cui = fields.Many2one(
+    nombre_alumno = fields.Text(string="Nombre",
+                                store=False,
+                                compute='make_nombre')
+
+    # relaciones
+    alumno = fields.Many2one(
         'sysnotas.alumno',
-        string = 'Cui de Alumno',
-        index = True
+        string='Cui de Alumno'
         )
 
     matr_curs_cod = fields.Many2many(
         'sysnotas.curso',
-        string = 'Cursos'
+        string='Cursos'
         )
-    
-    """ sql constraints"""
+
+    # sql constraints
     _sql_constraints = [
         ('matr_cod_unique',
-         'UNIQUE (matr_cod)',
+         'UNIQUE (codigo)',
          'El codigo de matricula no puede repetirse!')]
 
-    #sql_constraints = [
-    #    ('matr_alum_cui_2',
-    #     'UNIQUE (matr_alum_cui)',
-    #     'El codigo de alumno no puede repetirse!')]
-
     @api.one
-    @api.depends('matr_alum_cui')
-    def make_nombre(self):        
-        if self.matr_alum_cui:
-            self.matr_alum_mst = self.matr_alum_cui.alum_nomb +" "+ self.matr_alum_cui.alum_apel 
+    @api.depends('alumno')
+    def make_nombre(self):
+        print 'Entre'
+        if self.alumno:
+            self.nombre_alumno = "{0} {1}".format(self.alumno.nombre,
+                                                  self.alumno.apellido)
 
 
 class Horario(models.Model):
