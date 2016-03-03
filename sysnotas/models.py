@@ -73,7 +73,7 @@ class curso(models.Model):
         string = 'matr_cod' 
         )
     curs_curs_hrio = fields.One2many(
-        'sysnotas.crsho',
+        'sysnotas.curso.horario',
         'curs_curs_hrio',
         string = 'Relacion de horas'
         )
@@ -168,19 +168,19 @@ class TipoHorario(models.Model):
          'UNIQUE (denominacion)',
          'Ya existe tipo!')]
 
-class curs_hrio(models.Model):
-    _name = 'sysnotas.crsho'
 
-    crsho_tiph_cod = fields.Many2one(
-        'sysnotas.tiph',
-        string = 'Tipo'
-        )
-    crsho_hrio_cod = fields.Many2one(
-        'sysnotas.hrio',
-        string = 'Horas'
-        )
+class CursoHorario(models.Model):
+    _name = 'sysnotas.curso.horario'
+
+    tipo_horario = fields.Many2one(
+        'sysnotas.tipohorario',
+        string='Tipo')
+
+    horario = fields.Many2one(
+        'sysnotas.horario',
+        string='Horas')
 
     curs_curs_hrio = fields.Many2one(
         'sysnotas.curso',
-        string="relacion curso hora"
+        string="Relación curso hora"
         )
