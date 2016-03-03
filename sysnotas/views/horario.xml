@@ -10,7 +10,7 @@
         <act_window 
             id='do_horario_action' 
             name='Horario' 
-            res_model='sysnotas.hrio' 
+            res_model='sysnotas.horario' 
             view_mode='tree,form'/>
 
         <menuitem 
@@ -25,7 +25,7 @@
         <!-- view -->
         <record id='view_form_horario' model='ir.ui.view'>
             <field name='name'>horario Form</field>
-            <field name='model'>sysnotas.hrio</field>
+            <field name='model'>sysnotas.horario</field>
             <field name='arch' type='xml'>
             <form>
                 <header>
@@ -33,7 +33,7 @@
                 <sheet>
                 <group name="group_top">
                     <group name="group_left">                
-                        <field name='hrio_deno'/>
+                        <field name='hora'/>
                     </group>
                 </group>
                 </sheet>
@@ -44,10 +44,10 @@
         <!-- Tree -->
         <record id="view_tree_horario" model="ir.ui.view">
             <field name='name'>horario tree</field>
-            <field name='model'>sysnotas.hrio</field>
+            <field name='model'>sysnotas.horario</field>
             <field name='arch' type='xml'>
             <tree>
-                        <field name='hrio_deno'/>
+                        <field name='hora'/>
             </tree>
             </field>
         </record>

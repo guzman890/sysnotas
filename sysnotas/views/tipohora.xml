@@ -10,12 +10,12 @@
         <act_window 
             id='do_tipohorario_action' 
             name='Tipos de horarios' 
-            res_model='sysnotas.tiph' 
+            res_model='sysnotas.tipohorario' 
             view_mode='tree,form'/>
 
         <menuitem 
             id="second_left_menu_tipohorario" 
-            name="Tipos de horarios" 
+            name="Tipos de Horarios" 
             parent="first_left_menu" 
             action="do_tipohorario_action"/>
         <!-- Full id location:
@@ -25,7 +25,7 @@
         <!-- view -->
         <record id='view_form_tipohorario' model='ir.ui.view'>
             <field name='name'>tipohorario Form</field>
-            <field name='model'>sysnotas.tiph</field>
+            <field name='model'>sysnotas.tipohorario</field>
             <field name='arch' type='xml'>
             <form>
                 <header>
@@ -33,7 +33,7 @@
                 <sheet>
                 <group name="group_top">
                     <group name="group_left">                
-                        <field name='tiph_deno'/>
+                        <field name='denominacion'/>
                     </group>
                 </group>
                 </sheet>
@@ -44,10 +44,10 @@
         <!-- Tree -->
         <record id="view_tree_tipohorario" model="ir.ui.view">
             <field name='name'>tipohorario tree</field>
-            <field name='model'>sysnotas.tiph</field>
+            <field name='model'>sysnotas.tipohorario</field>
             <field name='arch' type='xml'>
             <tree>
-                        <field name='tiph_deno'/>
+                        <field name='denominacion'/>
                     </tree>
             </field>
         </record>

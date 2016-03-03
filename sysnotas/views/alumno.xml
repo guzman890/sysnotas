@@ -33,11 +33,11 @@
                 <sheet>
                 <group name="group_top">
                     <group name="group_left">                
-                        <field name='alum_nomb'/>
-                        <field name='alum_apel'/>
-                        <field name='alum_cui'/>
-                        <field name='alum_obs'/>
-                        <field name='alum_foto' widget='image' width="200" height="200"/>   
+                        <field name='nombre'/>
+                        <field name='apellido'/>
+                        <field name='cui'/>
+                        <field name='observacion'/>
+                        <field name='foto' widget='image' width="200" height="200"/>   
                     </group>
                 </group>
                 </sheet>
@@ -51,10 +51,10 @@
             <field name='model'>sysnotas.alumno</field>
             <field name='arch' type='xml'>
             <tree>
-                    <field name='alum_nomb'/>
-                    <field name='alum_apel'/>
-                    <field name='alum_cui'/>
-                    <field name='alum_obs'/>
+                    <field name='nombre'/>
+                    <field name='apellido'/>
+                    <field name='cui'/>
+                    <field name='observacion'/>
             </tree>
             </field>
         </record>
