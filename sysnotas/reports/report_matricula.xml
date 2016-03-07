@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <report
+        id="report_matricula"
+        model="sysnotas.matricula"
+        string="Reporte de Matricula"
+        name="sysnotas.report_matricula_view"
+        file="sysnotas.report_matricula"
+        report_type="qweb-pdf"
+    />
+
+    <template id="sysnotas.report_matricula_view">
+        <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+                <h2>Reporte de matricula: <i><span t-field="o.alumno.cui"/></i></h2>
+
+                <img t-att-src="http://localhost:8069/web/binary/image?model=sysnotas.alumno&id=13&field=foto&t=1457392357383"/>
+
+                <table>
+                    <tr>
+                        <td>Codigo de Matricula: </td><td><span t-field="o.codigo"/></td>
+                    </tr>
+                    <tr>
+                        <td>CUI de Alumno: </td><td><span t-field="o.alumno.cui"/></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre y Apellidos del Alumno: </td><td><span t-field="o.nombre_alumno"/></td>
+                    </tr>
+                    <tr>
+                        <td>Cursos Matriculados: </td><td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td><td>Nombre del Curso</td><td>Creditos</td>
+                    </tr>
+
+                    <tr t-foreach="o.matr_curs_cod" t-as="curso">
+                        <td></td><td><span t-field="curso.curso_nombre"/></td><td><span t-field="curso.creditos"/></td>
+                    </tr>   
+
+                </table>
+            </div>
+        </t>
+        </t>
+    </template>
+
+</data>
+</openerp>
