@@ -35,6 +35,7 @@
                     <group name="group_left">                
                         <field name='tipo_horario'/>
                         <field name='horario'/>
+                        <field name='dia'/>
                     </group>
                 </group>
                 </sheet>
@@ -50,6 +51,8 @@
             <tree>
                         <field name='tipo_horario'/>
                         <field name='horario'/>
+                        <field name='curso'/>
+                        <field name='dia'/>
             </tree>
             </field>
         </record>

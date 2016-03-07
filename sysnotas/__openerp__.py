@@ -31,7 +31,9 @@
         'views/matricula.xml',
         'views/curs_hrio.xml',
         'views/tipohora.xml',
-        'views/horario.xml'
+        'views/horario.xml',
+        'report.xml',
+        'reports/report_matricula.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

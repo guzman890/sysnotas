@@ -34,7 +34,7 @@ class Alumno(models.Model):
     @api.one
     @api.constrains('nombre')
     def check_value_re(self):
-        pattern = compile("^[a-zA-Z]+$")
+        pattern = compile("^[a-zA-Z]+[\sa-zA-Z]*$")
         if not pattern.match(self.nombre):
             msg = 'El campo Nombre sólo puede tener letras!'
             raise ValidationError(msg)
@@ -42,7 +42,7 @@ class Alumno(models.Model):
     @api.one
     @api.constrains('cui')
     def alum_cui_check(self):
-        pattern = compile("^[1-9]{8}$")
+        pattern = compile("^[1-9]{1}[0-9]{7}$")
         if not pattern.match(str(self.cui)):
             msg = "El campo CUI debe tener 8 números !"
             raise ValidationError(msg)
@@ -85,11 +85,15 @@ class Curso(models.Model):
     @api.depends('curso_horario_rel')
     def _show(self):
         self.curs_comp = " "
+        str_aux = " "
         for c in self.curso_horario_rel:
+            if str_aux == " " or str_aux != str(c.dia):
+                self.curs_comp += " "+str(c.dia) + "->"
+
             self.curs_comp += str(c.tipo_horario.denominacion) + "-" + \
                               str(c.horario.hora) + " "
-
-
+            str_aux = str(c.dia)
+        
 class Matricula(models.Model):
     _name = 'sysnotas.matricula'
     _rec_name = "codigo"
@@ -161,6 +165,7 @@ class TipoHorario(models.Model):
 
 class CursoHorario(models.Model):
     _name = 'sysnotas.curso.horario'
+    _rec_name = 'dia'
 
     tipo_horario = fields.Many2one(
         'sysnotas.tipohorario',
@@ -174,3 +179,24 @@ class CursoHorario(models.Model):
         'sysnotas.curso',
         string="Relación curso hora"
     )
+
+    dia = fields.Selection([
+        ('Lunes', "Lunes"),
+        ('Martes', "Martes"),
+        ('Miercoles', "Miercoles"),
+        ('Jueves', "Jueves"),
+        ('Viernes', "Viernes"),
+    ], default='Lunes')
+
+
+
+# It is just a joke
+"""
+class Wizard(models.TransientModel):
+    _name = 'sysnotas.dia'
+
+    session_id = fields.Many2one('sysnotas.curso.horario',
+                                 string="Session",
+                                 required=True
+                                 )
+"""
