@@ -16,7 +16,9 @@
             <div class="page">
                 <h2>Reporte de matricula: <i><span t-field="o.alumno.cui"/></i></h2>
 
-                <img t-att-src="http://localhost:8069/web/binary/image?model=sysnotas.alumno&id=13&field=foto&t=1457392357383"/>
+<!--TODO  poner una imagen en un reporte-->
+
+                <span t-field="o.alumno.foto" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;:&quot;img-rounded&quot;}"/>
 
                 <table>
                     <tr>
