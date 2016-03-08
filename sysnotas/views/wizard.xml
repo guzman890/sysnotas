@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <!-- Action to open tipo hora -->
+        <act_window 
+            id='do_wizard_action' 
+            name='wizard' 
+            res_model='sysnotas.wizard' 
+            view_mode='tree,form,graph'/>
+
+        <menuitem 
+            id="second_left_menu_wizard" 
+            name="wizard" 
+            parent="first_left_menu" 
+            action="do_wizard_action"/>
+        <!-- Full id location:
+             action="openacademy.course_list_action"
+             It is not required when it is the same module -->
+        
+        <!-- view -->
+        <record id='view_form_wizard' model='ir.ui.view'>
+            <field name='name'>wizard Form</field>
+            <field name='model'>sysnotas.wizard</field>
+            <field name='arch' type='xml'>
+            <form>
+                <header>
+                </header>
+                <sheet>
+                <group name="group_top">
+                    <group name="group_left">
+                        <field name="identi"/>                  
+                        <field name='matricula_id'/>
+                        <field name='cantidad_cursos'/>
+                    </group>
+                </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+        <!-- Tree -->
+        <record id="view_tree_wizard" model="ir.ui.view">
+            <field name='name'>wizard tree</field>
+            <field name='model'>sysnotas.wizard</field>
+            <field name='arch' type='xml'>
+                <tree>
+                    <field name="identi"/>  
+                    <field name='matricula_id'/>
+                    <field name='cantidad_cursos'/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_graph_wizard">
+            <field name="name">wizard graph</field>
+            <field name="model">sysnotas.wizard</field>
+            <field name="arch" type="xml">
+                <graph string="Session" type="pivot" stacked="True">
+                    <field name="identi" />  
+                    <field name="cantidad_cursos" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+    </data>
+</openerp>
