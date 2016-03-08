@@ -11,7 +11,7 @@
             id='do_matricula_action' 
             name='Matricula' 
             res_model='sysnotas.matricula' 
-            view_mode='tree,form'/>
+            view_mode='tree,form,graph'/>
 
         <menuitem 
             id="second_left_menu_matricula" 
@@ -57,5 +57,18 @@
             </tree>
             </field>
         </record>
+
+        <!-- Graph -->
+        <record model="ir.ui.view" id="view_graph_matricula">
+			<field name="name">matricula graph</field>
+			<field name="model">sysnotas.matricula</field>
+			<field name="arch" type="xml">
+				<graph string="Session" type="pivot" stacked="True">
+					<field name="alumno"/>	
+					<field name="codigo" />
+				</graph>
+			</field>
+		</record>
+
     </data>
 </openerp>

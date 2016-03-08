@@ -167,36 +167,42 @@ class CursoHorario(models.Model):
     _name = 'sysnotas.curso.horario'
     _rec_name = 'dia'
 
-    tipo_horario = fields.Many2one(
-        'sysnotas.tipohorario',
-        string='Tipo')
+    tipo_horario = fields.Many2one('sysnotas.tipohorario',
+                                   string='Tipo')
 
-    horario = fields.Many2one(
-        'sysnotas.horario',
-        string='Horas')
+    horario = fields.Many2one('sysnotas.horario',
+                              string='Horas'
+                              )
 
-    curso = fields.Many2one(
-        'sysnotas.curso',
-        string="Relación curso hora"
-    )
+    curso = fields.Many2one('sysnotas.curso',
+                            string="Relación curso hora"
+                            )
 
     dia = fields.Selection([
-        ('Lunes', "Lunes"),
-        ('Martes', "Martes"),
-        ('Miercoles', "Miercoles"),
-        ('Jueves', "Jueves"),
-        ('Viernes', "Viernes"),
-    ], default='Lunes')
+                          ('Lunes', "Lunes"),
+                          ('Martes', "Martes"),
+                          ('Miercoles', "Miercoles"),
+                          ('Jueves', "Jueves"),
+                          ('Viernes', "Viernes"), ], default='Lunes')
 
 
 
-# It is just a joke
-"""
 class Wizard(models.TransientModel):
-    _name = 'sysnotas.dia'
+    _name = 'sysnotas.wizard'
 
-    session_id = fields.Many2one('sysnotas.curso.horario',
-                                 string="Session",
-                                 required=True
-                                 )
-"""
+    identi = fields.Integer(string="cod")
+
+    matricula_id = fields.Many2one('sysnotas.matricula',
+                                  string="Session",
+                                  required=True
+                                  )
+    cantidad_cursos = fields.Integer(string="cant_cursos",
+                                     compute="make_len",
+                                     store=True
+                                     )
+    @api.one
+    @api.depends('matricula_id')
+    def make_len(self):
+        if self.matricula_id:
+            self.cantidad_cursos = len(self.matricula_id.matr_curs_cod)
+
