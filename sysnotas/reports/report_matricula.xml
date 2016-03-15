@@ -7,7 +7,7 @@
         string="Reporte de Matricula"
         name="sysnotas.report_matricula_view"
         file="sysnotas.report_matricula"
-        report_type="qweb-pdf"
+        report_type="qweb-html"
     />
 
     <template id="sysnotas.report_matricula_view">

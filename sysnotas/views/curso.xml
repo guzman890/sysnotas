@@ -37,8 +37,7 @@
                     <field name='curso_codigo'/>
                     <field name='creditos'/>
                     <field name='curso_horario_rel'/>
-
-                    </group>
+                  </group>
                 </group>
                 </sheet>
             </form>
@@ -55,6 +54,8 @@
                     <field name='curso_codigo'/>
                     <field name='creditos'/>
                     <field name='curs_comp'/>
+
+                    <!--button name="add_line" string="Add" type="object" icon="gtk-go-forward" /-->
             </tree>
             </field>
         </record>

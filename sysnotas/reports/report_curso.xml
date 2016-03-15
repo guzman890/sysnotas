@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <report
+        id="report_curso"
+        model="sysnotas.curso"
+        string="Reporte de curso"
+        name="sysnotas.report_curso_view"
+        file="sysnotas.report_curso"
+        report_type="qweb-html"
+    />
+
+    <template id="sysnotas.report_curso_view">
+        <t t-call="report.html_container">
+        
+            <div class="page">
+                <br><h4>Lunes</h4></br>
+                <table class="table table-bordered" style="border: 0.25px solid #9999">
+                    <tr>
+                        <td></td>
+                        <td>00-01</td>
+                        <td>01-02</td>
+                        <td>02-03</td>
+                        <td>03-04</td>
+                        <td>04-05</td>
+                        <td>05-06</td>
+                        <td>06-07</td>
+                        <td>07-08</td>
+                        <td>08-09</td>
+                        <td>09-10</td>
+                        <td>10-11</td>
+                        <td>11-12</td>
+                        <td>12-13</td>
+                        <td>13-14</td>
+                        <td>14-15</td>
+                        <td>15-16</td>
+                        <td>16-17</td>
+                        <td>17-18</td>
+                        <td>18-19</td>
+                        <td>19-20</td>
+                        <td>20-21</td>
+                        <td>21-22</td>
+                        <td>22-24</td>
+                        <td>23-00</td>                      
+                    </tr>
+                    <t t-foreach="docs" t-as="o">
+                    <tr t-if='o.rep_dia == "Lunes"'>
+
+                        <td><span t-field="o.rep_curso_nombre"/></td>
+                        <td><span t-field="o.h0"/></td>
+                        <td><span t-field="o.h1"/></td>
+                        <td><span t-field="o.h2"/></td>
+                        <td><span t-field="o.h3"/></td>
+                        <td><span t-field="o.h4"/></td>
+                        <td><span t-field="o.h5"/></td>
+                        <td><span t-field="o.h6"/></td>
+                        <td><span t-field="o.h7"/></td>
+                        <td><span t-field="o.h8"/></td>
+                        <td><span t-field="o.h9"/></td>
+                        <td><span t-field="o.h10"/></td>
+                        <td><span t-field="o.h11"/></td>
+                        <td><span t-field="o.h12"/></td>
+                        <td><span t-field="o.h13"/></td>
+                        <td><span t-field="o.h14"/></td>
+                        <td><span t-field="o.h15"/></td>
+                        <td><span t-field="o.h16"/></td>
+                        <td><span t-field="o.h17"/></td>
+                        <td><span t-field="o.h18"/></td>
+                        <td><span t-field="o.h19"/></td>
+                        <td><span t-field="o.h20"/></td>
+                        <td><span t-field="o.h21"/></td>
+                        <td><span t-field="o.h22"/></td>
+                        <td><span t-field="o.h23"/></td>
+                    </tr>
+                    </t>
+                </table>
+                <br><h4>Martes</h4></br>
+                <table class="table table-bordered" style="border: 0.25px solid #9999">
+                    <tr>
+                        <td></td>
+                        <td>00-01</td>
+                        <td>01-02</td>
+                        <td>02-03</td>
+                        <td>03-04</td>
+                        <td>04-05</td>
+                        <td>05-06</td>
+                        <td>06-07</td>
+                        <td>07-08</td>
+                        <td>08-09</td>
+                        <td>09-10</td>
+                        <td>10-11</td>
+                        <td>11-12</td>
+                        <td>12-13</td>
+                        <td>13-14</td>
+                        <td>14-15</td>
+                        <td>15-16</td>
+                        <td>16-17</td>
+                        <td>17-18</td>
+                        <td>18-19</td>
+                        <td>19-20</td>
+                        <td>20-21</td>
+                        <td>21-22</td>
+                        <td>22-24</td>
+                        <td>23-00</td>                      
+                    </tr>
+                    <t t-foreach="docs" t-as="o">
+                    <tr t-if='o.rep_dia == "Martes"'>
+
+                        <td><span t-field="o.rep_curso_nombre"/></td>
+                        <td><span t-field="o.h0"/></td>
+                        <td><span t-field="o.h1"/></td>
+                        <td><span t-field="o.h2"/></td>
+                        <td><span t-field="o.h3"/></td>
+                        <td><span t-field="o.h4"/></td>
+                        <td><span t-field="o.h5"/></td>
+                        <td><span t-field="o.h6"/></td>
+                        <td><span t-field="o.h7"/></td>
+                        <td><span t-field="o.h8"/></td>
+                        <td><span t-field="o.h9"/></td>
+                        <td><span t-field="o.h10"/></td>
+                        <td><span t-field="o.h11"/></td>
+                        <td><span t-field="o.h12"/></td>
+                        <td><span t-field="o.h13"/></td>
+                        <td><span t-field="o.h14"/></td>
+                        <td><span t-field="o.h15"/></td>
+                        <td><span t-field="o.h16"/></td>
+                        <td><span t-field="o.h17"/></td>
+                        <td><span t-field="o.h18"/></td>
+                        <td><span t-field="o.h19"/></td>
+                        <td><span t-field="o.h20"/></td>
+                        <td><span t-field="o.h21"/></td>
+                        <td><span t-field="o.h22"/></td>
+                        <td><span t-field="o.h23"/></td>
+                    </tr>
+                    </t>
+                </table>
+                <br><h4>Miercoles</h4></br>
+                <table class="table table-bordered" style="border: 0.25px solid #9999">
+
+                    <tr>
+                        <td></td>
+                        <td>00-01</td>
+                        <td>01-02</td>
+                        <td>02-03</td>
+                        <td>03-04</td>
+                        <td>04-05</td>
+                        <td>05-06</td>
+                        <td>06-07</td>
+                        <td>07-08</td>
+                        <td>08-09</td>
+                        <td>09-10</td>
+                        <td>10-11</td>
+                        <td>11-12</td>
+                        <td>12-13</td>
+                        <td>13-14</td>
+                        <td>14-15</td>
+                        <td>15-16</td>
+                        <td>16-17</td>
+                        <td>17-18</td>
+                        <td>18-19</td>
+                        <td>19-20</td>
+                        <td>20-21</td>
+                        <td>21-22</td>
+                        <td>22-24</td>
+                        <td>23-00</td>                      
+                    </tr>
+                    <t t-foreach="docs" t-as="o">
+                    <tr t-if='o.rep_dia == "Miercoles"'>
+
+                        <td><span t-field="o.rep_curso_nombre"/></td>
+                        <td><span t-field="o.h0"/></td>
+                        <td><span t-field="o.h1"/></td>
+                        <td><span t-field="o.h2"/></td>
+                        <td><span t-field="o.h3"/></td>
+                        <td><span t-field="o.h4"/></td>
+                        <td><span t-field="o.h5"/></td>
+                        <td><span t-field="o.h6"/></td>
+                        <td><span t-field="o.h7"/></td>
+                        <td><span t-field="o.h8"/></td>
+                        <td><span t-field="o.h9"/></td>
+                        <td><span t-field="o.h10"/></td>
+                        <td><span t-field="o.h11"/></td>
+                        <td><span t-field="o.h12"/></td>
+                        <td><span t-field="o.h13"/></td>
+                        <td><span t-field="o.h14"/></td>
+                        <td><span t-field="o.h15"/></td>
+                        <td><span t-field="o.h16"/></td>
+                        <td><span t-field="o.h17"/></td>
+                        <td><span t-field="o.h18"/></td>
+                        <td><span t-field="o.h19"/></td>
+                        <td><span t-field="o.h20"/></td>
+                        <td><span t-field="o.h21"/></td>
+                        <td><span t-field="o.h22"/></td>
+                        <td><span t-field="o.h23"/></td>
+                    </tr>
+                    </t>
+                </table>
+                <br><h4>Jueves</h4></br>
+                <table class="table table-bordered" style="border: 0.25px solid #9999">
+
+                    <tr>
+                        <td></td>
+                        <td>00-01</td>
+                        <td>01-02</td>
+                        <td>02-03</td>
+                        <td>03-04</td>
+                        <td>04-05</td>
+                        <td>05-06</td>
+                        <td>06-07</td>
+                        <td>07-08</td>
+                        <td>08-09</td>
+                        <td>09-10</td>
+                        <td>10-11</td>
+                        <td>11-12</td>
+                        <td>12-13</td>
+                        <td>13-14</td>
+                        <td>14-15</td>
+                        <td>15-16</td>
+                        <td>16-17</td>
+                        <td>17-18</td>
+                        <td>18-19</td>
+                        <td>19-20</td>
+                        <td>20-21</td>
+                        <td>21-22</td>
+                        <td>22-24</td>
+                        <td>23-00</td>                      
+                    </tr>
+                    <t t-foreach="docs" t-as="o">
+                    <tr t-if='o.rep_dia == "Jueves"'>
+
+                        <td><span t-field="o.rep_curso_nombre"/></td>
+                        <td><span t-field="o.h0"/></td>
+                        <td><span t-field="o.h1"/></td>
+                        <td><span t-field="o.h2"/></td>
+                        <td><span t-field="o.h3"/></td>
+                        <td><span t-field="o.h4"/></td>
+                        <td><span t-field="o.h5"/></td>
+                        <td><span t-field="o.h6"/></td>
+                        <td><span t-field="o.h7"/></td>
+                        <td><span t-field="o.h8"/></td>
+                        <td><span t-field="o.h9"/></td>
+                        <td><span t-field="o.h10"/></td>
+                        <td><span t-field="o.h11"/></td>
+                        <td><span t-field="o.h12"/></td>
+                        <td><span t-field="o.h13"/></td>
+                        <td><span t-field="o.h14"/></td>
+                        <td><span t-field="o.h15"/></td>
+                        <td><span t-field="o.h16"/></td>
+                        <td><span t-field="o.h17"/></td>
+                        <td><span t-field="o.h18"/></td>
+                        <td><span t-field="o.h19"/></td>
+                        <td><span t-field="o.h20"/></td>
+                        <td><span t-field="o.h21"/></td>
+                        <td><span t-field="o.h22"/></td>
+                        <td><span t-field="o.h23"/></td>
+                    </tr>
+                    </t>
+                </table>
+                <br><h4>Viernes</h4></br>
+                <table class="table table-bordered" style="border: 0.25px solid #9999">
+
+                    <tr>
+                        <td></td>
+                        <td>00-01</td>
+                        <td>01-02</td>
+                        <td>02-03</td>
+                        <td>03-04</td>
+                        <td>04-05</td>
+                        <td>05-06</td>
+                        <td>06-07</td>
+                        <td>07-08</td>
+                        <td>08-09</td>
+                        <td>09-10</td>
+                        <td>10-11</td>
+                        <td>11-12</td>
+                        <td>12-13</td>
+                        <td>13-14</td>
+                        <td>14-15</td>
+                        <td>15-16</td>
+                        <td>16-17</td>
+                        <td>17-18</td>
+                        <td>18-19</td>
+                        <td>19-20</td>
+                        <td>20-21</td>
+                        <td>21-22</td>
+                        <td>22-24</td>
+                        <td>23-00</td>                      
+                    </tr>
+                    <t t-foreach="docs" t-as="o">
+                    <tr t-if='o.rep_dia == "Viernes"'>
+
+                        <td><span t-field="o.rep_curso_nombre"/></td>
+                        <td><span t-field="o.h0"/></td>
+                        <td><span t-field="o.h1"/></td>
+                        <td><span t-field="o.h2"/></td>
+                        <td><span t-field="o.h3"/></td>
+                        <td><span t-field="o.h4"/></td>
+                        <td><span t-field="o.h5"/></td>
+                        <td><span t-field="o.h6"/></td>
+                        <td><span t-field="o.h7"/></td>
+                        <td><span t-field="o.h8"/></td>
+                        <td><span t-field="o.h9"/></td>
+                        <td><span t-field="o.h10"/></td>
+                        <td><span t-field="o.h11"/></td>
+                        <td><span t-field="o.h12"/></td>
+                        <td><span t-field="o.h13"/></td>
+                        <td><span t-field="o.h14"/></td>
+                        <td><span t-field="o.h15"/></td>
+                        <td><span t-field="o.h16"/></td>
+                        <td><span t-field="o.h17"/></td>
+                        <td><span t-field="o.h18"/></td>
+                        <td><span t-field="o.h19"/></td>
+                        <td><span t-field="o.h20"/></td>
+                        <td><span t-field="o.h21"/></td>
+                        <td><span t-field="o.h22"/></td>
+                        <td><span t-field="o.h23"/></td>
+                    </tr>
+                    </t>
+                </table>
+            </div>
+        
+        </t>
+    </template>
+
+</data>
+</openerp>

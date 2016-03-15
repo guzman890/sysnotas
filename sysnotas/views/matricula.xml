@@ -28,8 +28,6 @@
             <field name='model'>sysnotas.matricula</field>
             <field name='arch' type='xml'>
             <form>
-                <header>
-                </header>
                 <sheet>
                 <group name="group_top">
                     <group name="group_left">                
@@ -50,6 +48,7 @@
             <field name='name'>matricula tree</field>
             <field name='model'>sysnotas.matricula</field>
             <field name='arch' type='xml'>
+
             <tree>
                     <field name='codigo'/>
                     <field name='alumno'/>

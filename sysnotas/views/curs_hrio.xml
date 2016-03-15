@@ -10,7 +10,7 @@
         <act_window 
             id='do_curs_hrio_action' 
             name='Horarios para cursos' 
-            res_model='sysnotas.curso.horario' 
+            res_model='sysnotas.curso_horario' 
             view_mode='tree,form'/>
 
         <menuitem 
@@ -25,7 +25,7 @@
         <!-- view -->
         <record id='view_form_curs_hrio' model='ir.ui.view'>
             <field name='name'>curshrio Form</field>
-            <field name='model'>sysnotas.curso.horario</field>
+            <field name='model'>sysnotas.curso_horario</field>
             <field name='arch' type='xml'>
             <form>
                 <header>
@@ -34,7 +34,8 @@
                 <group name="group_top">
                     <group name="group_left">                
                         <field name='tipo_horario'/>
-                        <field name='horario'/>
+                        <field name='horaini'/>
+                        <field name='horafin'/>
                         <field name='dia'/>
                     </group>
                 </group>
@@ -46,12 +47,12 @@
         <!-- Tree -->
         <record id="view_tree_curs_hrio" model="ir.ui.view">
             <field name='name'>curshrio tree</field>
-            <field name='model'>sysnotas.curso.horario</field>
+            <field name='model'>sysnotas.curso_horario</field>
             <field name='arch' type='xml'>
             <tree>
                         <field name='tipo_horario'/>
-                        <field name='horario'/>
-                        <field name='curso'/>
+                        <field name='horaini'/>
+                        <field name='horafin'/>
                         <field name='dia'/>
             </tree>
             </field>
