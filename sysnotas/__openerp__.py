@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'board'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
@@ -31,9 +31,9 @@
         'views/matricula.xml',
         'views/curs_hrio.xml',
         'views/tipohora.xml',
-        'views/horario.xml',
         'views/wizard.xml',
-        'reports/report_matricula.xml'
+        'reports/report_matricula.xml',
+        'reports/report_curso.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
