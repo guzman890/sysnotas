@@ -32,6 +32,7 @@
         'views/curs_hrio.xml',
         'views/tipohora.xml',
         'views/wizard.xml',
+        'views/reported.xml',
         'reports/report_matricula.xml',
         'reports/report_curso.xml'
     ],

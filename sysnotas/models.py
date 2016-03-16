@@ -218,6 +218,8 @@ class reported(models.TransientModel):
                           size=30,
                           required=True
                           )
+    rep_acumulado = fields.Integer(string="cantidad de alumnos")
+
     h0 = fields.Integer(string="h00")
 
     h1 = fields.Integer(string="h01")
@@ -300,14 +302,19 @@ class ParticularReport(models.AbstractModel):
                             tabla_curso[curso.curso_codigo][dia][hora] += 1
         wizz = self.env['sysnotas.reported'].search([])
         for curso in cursos:
+            nrDia = 1
             for dia in dias:
                 if tabla_curso[curso.curso_codigo].has_key(dia):
                     horas_wizard = {}
                     horas_wizard['rep_curso_nombre'] = curso.curso_nombre
-                    horas_wizard['rep_dia'] = dia
+                    horas_wizard['rep_dia'] = str(nrDia)+" "+dia
+                    acumulado = 0
                     for hora in range(0, 24):
                         horas_wizard['h'+str(hora)] = tabla_curso[curso.curso_codigo][dia][hora]
+                        acumulado += tabla_curso[curso.curso_codigo][dia][hora]
+                    horas_wizard['rep_acumulado'] = acumulado
                     wizz.create(horas_wizard)
+                nrDia += 1
         report_obj = self.env['report']
         report = report_obj._get_report_from_name('sysnotas.report_curso_view')
         docargs = {

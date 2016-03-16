@@ -11,7 +11,7 @@
             id='do_reported_action' 
             name='reported' 
             res_model='sysnotas.reported' 
-            view_mode='tree,form'/>
+            view_mode='tree,graph'/>
 
         <menuitem 
             id="second_left_menu_reported" 
@@ -30,10 +30,20 @@
 
             <tree>
                     <field name='rep_curso_nombre'/>
-                    <field name='rep_curso_credito'/>
+                    <field name='rep_dia'/>
             </tree>
             </field>
         </record>
-
+        <record model="ir.ui.view" id="view_graph_reported">
+            <field name="name">reported graph</field>
+            <field name="model">sysnotas.reported</field>
+            <field name="arch" type="xml">
+                <graph string="reported" type="pivot" stacked="True">
+                    <field name="rep_curso_nombre" type="dimension,row" /> 
+                    <field name="rep_dia" type="dimension,col" />
+                    <field name="rep_acumulado"  type="measure"/> 
+                </graph>
+            </field>
+        </record>
     </data>
 </openerp>
