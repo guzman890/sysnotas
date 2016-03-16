@@ -167,10 +167,10 @@ class CursoHorario(models.Model):
                                    string='Tipo'
                                    )
 
-    horaini = fields.Selection([(t, str(t)+":00") for t in range(0, 24)],
+    horaini = fields.Selection([(t, str(t)+":00") for t in range(7, 22)],
                                default=0)
 
-    horafin = fields.Selection([(t, str(t)+":00") for t in range(0, 24)],
+    horafin = fields.Selection([(t, str(t)+":00") for t in range(7, 22)],
                                default=0)
 
     curso = fields.Many2one('sysnotas.curso',
