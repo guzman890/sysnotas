@@ -26,7 +26,7 @@
                    
                     </tr>
                     <t t-foreach="docs" t-as="o">
-                    <tr t-if='o.rep_dia == "Lunes"'>
+                    <tr t-if='o.rep_dia == "1 Lunes"'>
 
                         <td><span t-field="o.rep_curso_nombre"/></td>
                         <td><span t-field="o.h7"/></td>
@@ -57,7 +57,7 @@
 
                     </tr>
                     <t t-foreach="docs" t-as="o">
-                    <tr t-if='o.rep_dia == "Martes"'>
+                    <tr t-if='o.rep_dia == "2 Martes"'>
 
                         <td><span t-field="o.rep_curso_nombre"/></td>
                         <td><span t-field="o.h7"/></td>
@@ -89,7 +89,7 @@
 
                     </tr>
                     <t t-foreach="docs" t-as="o">
-                    <tr t-if='o.rep_dia == "Miercoles"'>
+                    <tr t-if='o.rep_dia == "3 Miercoles"'>
 
                         <td><span t-field="o.rep_curso_nombre"/></td>
                         <td><span t-field="o.h7"/></td>
@@ -122,7 +122,7 @@
 
                     </tr>
                     <t t-foreach="docs" t-as="o">
-                    <tr t-if='o.rep_dia == "Jueves"'>
+                    <tr t-if='o.rep_dia == "4 Jueves"'>
 
                         <td><span t-field="o.rep_curso_nombre"/></td>
                         <td><span t-field="o.h7"/></td>
@@ -154,7 +154,7 @@
 
                     </tr>
                     <t t-foreach="docs" t-as="o">
-                    <tr t-if='o.rep_dia == "Viernes"'>
+                    <tr t-if='o.rep_dia == "5 Viernes"'>
 
                         <td><span t-field="o.rep_curso_nombre"/></td>
                         <td><span t-field="o.h7"/></td>
